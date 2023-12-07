@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class normalAtt : MonoBehaviour
@@ -16,8 +17,15 @@ public class normalAtt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.localScale.x >= 1){
+            rb.velocity = new Vector2(spd, rb.velocity.y);
+        }else{
+            rb.velocity = new Vector2(-spd, rb.velocity.y);
+        }
         if(timeShow>=0){
             timeShow -= Time.deltaTime;
+        }else{
+            Destroy(gameObject);
         }
     }
 }
